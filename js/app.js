@@ -18,7 +18,8 @@ function eventListeners() {
   email.addEventListener("blur", validateField);
   subject.addEventListener("blur", validateField);
   message.addEventListener("blur", validateField);
-
+  //Send email and reset form
+  sendEmailForm.addEventListener("submit", sendEmail);
   resetBtn.addEventListener("click", resetForm);
 }
 
@@ -28,6 +29,18 @@ function eventListeners() {
 function appInit() {
   //Disable the send button on load
   sendBtn.disable = true;
+}
+
+function sendEmail(e) {
+  e.preventDefault();
+  //Show spinner
+  const spinner = document.querySelector("#spinner");
+  spinner.style.display = "block";
+  //Hide spinner the show send email image
+  setTimeout(function() {
+    //Hide spinner
+    spinner.style.display = "none";
+  }, 3000);
 }
 
 //Validate the fields
